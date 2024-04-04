@@ -3,7 +3,7 @@
     <h2>일기 개수: {{count}}</h2>
     <br>
     <div>
-    <form action="{%url 'home' %}">
+    <form>
         <select name="arrange" id="arrange"> <!--여기 정도를 views에 전달하고 변경!!-->
             <option value="new">최신순</option>
             <option value="old">오래된순</option>
@@ -26,3 +26,10 @@
     {% endfor %}
     <a href="create">일기 작성하기</a>
 </div>
+<script>
+    document.getElementById('arrange').addEventListener('change',
+    function(){
+        var selectedValue = this.value;
+        console.log(selectedValue)
+    });
+</script>
