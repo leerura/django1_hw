@@ -2,6 +2,15 @@
     <h1>공유 일기</h1>
     <h2>일기 개수: {{count}}</h2>
     <br>
+    <div>
+    <form action="{%url 'home' %}">
+        <select name="arrange" id="arrange"> <!--여기 정도를 views에 전달하고 변경!!-->
+            <option value="new">최신순</option>
+            <option value="old">오래된순</option>
+        </select>
+    </form>
+    <div></div>
+    <br>
     {% for diary in diarys%}
         <br>
         <div>

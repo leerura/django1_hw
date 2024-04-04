@@ -4,8 +4,13 @@ from django.utils import timezone #pub_date 땜에
 # Create your views here.
 
 def home(request):
-    diarys = Diary.objects.all()
-    return render(request, "home.html", {"diarys":diarys , "count" : len(diarys)})
+    diarys = Diary.objects.all().order_by('id')
+    count = len(diarys)
+    count = int(count)
+    #select의 value에 따라 뭐 보낼지 정해ㅐㅐㅐㅐㅐ
+    old_diarys = diarys
+    new_diarys = diarys.reverse()
+    return render(request, "home.html", {"diarys":old_diarys , "count" : count})
 
 def create(request):
     return render(request, "create.html")
@@ -22,3 +27,4 @@ def create_func(request):
     new_diary.body = request.POST['body']
     new_diary.save() #저장
     return redirect('detail', new_diary.id) #id보내야 됨
+
