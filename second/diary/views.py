@@ -10,7 +10,7 @@ def home(request):
     #select의 value에 따라 뭐 보낼지 정해ㅐㅐㅐㅐㅐ
     old_diarys = diarys
     new_diarys = diarys.reverse()
-    return render(request, "home.html", {"diarys":old_diarys , "count" : count})
+    return render(request, "home.html", {"diarys":new_diarys , "count" : count})
 
 def create(request):
     return render(request, "create.html")
