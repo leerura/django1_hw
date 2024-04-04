@@ -1,0 +1,19 @@
+<div style="text-align: center;">
+    <h1>공유 일기</h1>
+    <h2>일기 개수: {{count}}</h2>
+    <br>
+    {% for diary in diarys%}
+        <br>
+        <div>
+            작성자: {{diary.writer}}
+            <br>
+            제목: {{diary.title}}
+            <br>
+            작성 날짜: {{diary.pub_update}}
+            <br>
+            <a href="{% url 'detail' diary.id %}">상세보기</a> <!-- 아이도 같이 보내-->
+        </div>
+        <br>
+    {% endfor %}
+    <a href="create">일기 작성하기</a>
+</div>

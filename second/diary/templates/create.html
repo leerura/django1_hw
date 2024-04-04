@@ -1,0 +1,21 @@
+<div style="text-align: center;">
+    <h1>새로운 일기를 작성하세요!!</h1>
+    <form action="{%url 'create_func' %}" method="post" > <!--액션삽입 post?-->
+        {%csrf_token%} <!--방어 POST쓰면 해야됨-->
+        <label for="title">제목</label>
+        <input type = "text" id="title" name="title" >
+        <br>
+        <label for="date">작성 날짜</label>
+        <input type = "date" id="date" name="date"  min="2024-01-01" max="2029-12-31">
+        <br>
+        <label for="writer">작성자</label>
+        <input type = "text" id="writer" name="writer"  >
+        <br>
+        <label for="body">본문</label>
+        <br>
+        <textarea rows="30" cols="100" id="body" name="body"></textarea>
+        <br>
+        <input type="submit" value="저장">
+    </form>
+    <a href="{% url 'home' %}">홈으로</a>
+</div>
