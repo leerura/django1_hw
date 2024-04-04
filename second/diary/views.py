@@ -16,7 +16,7 @@ def create(request):
     return render(request, "create.html")
 
 def detail(request, id):
-    diary_detail = get_object_or_404(Diary,pk = id)
+    diary_detail = get_object_or_404(Diary, pk = id)
     return render(request , "detail.html", {'diary_detail' : diary_detail} ) 
 
 def create_func(request):
@@ -25,6 +25,6 @@ def create_func(request):
     new_diary.pub_update = request.POST['date'] #timezone.now도 가능
     new_diary.writer = request.POST['writer']
     new_diary.body = request.POST['body']
-    new_diary.save() #저장
+    new_diary.save() #저장                                                  
     return redirect('detail', new_diary.id) #id보내야 됨
 
