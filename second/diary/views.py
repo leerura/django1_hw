@@ -5,12 +5,13 @@ from django.utils import timezone #pub_date 땜에
 
 def home(request):
     diarys = Diary.objects.all().order_by('id')
-    count = len(diarys)
+    count = len(diarys)   #diarys.count !! 라는 함수도 있음
     count = int(count)
     #select의 value에 따라 뭐 보낼지 정해ㅐㅐㅐㅐㅐ
     old_diarys = diarys
     new_diarys = diarys.reverse()
-    return render(request, "home.html", {"diarys":new_diarys , "count" : count})
+    data = {"diarys":new_diarys , "count" : count}
+    return render(request, "home.html", data)
 
 def create(request):
     return render(request, "create.html")
@@ -28,3 +29,20 @@ def create_func(request):
     new_diary.save() #저장                                                  
     return redirect('detail', new_diary.id) #id보내야 됨
 
+def update(request, update_id):
+    diary_update = get_object_or_404(Diary, pk=update_id)
+    return render(request, "update.html", {'diary_update':diary_update})
+
+def update_fuc(request, to_id):
+    diary_to_update = get_object_or_404(Diary, pk=to_id)
+    diary_to_update.title = request.POST['title'] #id 사용 not name
+    diary_to_update.pub_update = request.POST['date'] #timezone.now도 가능
+    diary_to_update.writer = request.POST['writer']
+    diary_to_update.body = request.POST['body']
+    diary_to_update.save() #저장
+    return redirect('detail', diary_to_update.id )      
+
+def delete(request, delete_id):
+    diary_to_delete = get_object_or_404(Diary, pk=delete_id)
+    diary_to_delete.delete()
+    return redirect('home')

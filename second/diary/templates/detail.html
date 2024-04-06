@@ -1,16 +1,30 @@
-<div style="text-align: center;">
-    <h1>일기</h1>
-    <div>
-        작성자: {{diary_detail.writer}} <!--detail로 바꿔야 해-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1>일기</h1>
+        <div>
+            작성자: {{diary_detail.writer}} <!--detail로 바꿔야 해-->
+            <br>
+             제목: {{diary_detail.title}}
+            <br>
+            작성 날짜: {{diary_detail.pub_update}}
+            <br>
+            본문 내용: {{diary_detail.body}}
+        </div>
         <br>
-         제목: {{diary_detail.title}}
+        <a href="{% url 'update' diary_detail.id %}">수정하기</a>
         <br>
-        작성 날짜: {{diary_detail.pub_update}}
+        <a href="{% url 'delete' diary_detail.id %}">삭제하기</a>
         <br>
-        본문 내용: {{diary_detail.body}}
+        <a href="create">일기 작성하기</a>
+        <br>
+        <a href="{% url 'home' %}">홈으로</a>
     </div>
-    <br>
-    <a href="create">일기 작성하기</a>
-    <br>
-    <a href="{% url 'home' %}">홈으로</a>
-</div>
+</body>
+</html>
