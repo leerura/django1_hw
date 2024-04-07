@@ -1,0 +1,19 @@
+<div>
+    <h1>회원가입</h1>
+    <br>
+    <div>
+        <form action="{% url 'signup_func' %}" method="POST">
+            {%csrf_token%}
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username">
+            <br>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email">
+            <br>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+            <br>
+            <input type="submit" value="계정 생성">
+        </form>
+    </div>
+</div>

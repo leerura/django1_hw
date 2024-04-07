@@ -1,0 +1,16 @@
+<div>
+    <h1>로그인</h1>
+    <br>
+    <div>
+        <form action="{% url 'login_func' %}" method="POST">
+            {%csrf_token%}
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username">
+            <br>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+            <br>
+            <input type="submit" value="로그인">
+        </form>
+    </div>
+</div>
