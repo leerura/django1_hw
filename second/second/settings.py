@@ -129,3 +129,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static') #static 파일을 어디에 모�
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #사용자가 업로드한 파일 여기다 보관
+MEDIA_URL = '/media/' #미디어 파일 URL

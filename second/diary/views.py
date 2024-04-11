@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect, get_object_or_404 #redirect 저장 후 다시 상세보기로
 from .models import Diary
 from django.utils import timezone #pub_date 땜에
+from .forms import BlogForm
+
 # Create your views here.
 
 def home(request):
@@ -14,7 +16,8 @@ def home(request):
     return render(request, "home.html", data)
 
 def create(request):
-    return render(request, "create.html")
+    form = BlogForm
+    return render(request, "create.html", {'form':form})
 
 def detail(request, id):
     diary_detail = get_object_or_404(Diary, pk = id)
@@ -26,6 +29,7 @@ def create_func(request):
     new_diary.pub_update = request.POST['date'] #timezone.now도 가능
     new_diary.writer = request.POST['writer']
     new_diary.body = request.POST['body']
+    new_diary.image = request.FILES['image'] #이미지는 다른 애들과 다르게
     new_diary.save() #저장                                                  
     return redirect('detail', new_diary.id) #id보내야 됨
 

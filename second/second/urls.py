@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path,include #include는 다른 거 가져올 떄
 from diary.views import home
 from account.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +29,4 @@ urlpatterns = [
     path('signup_func', signup_func, name='signup_func'),
     path('login', login , name='login' ),
     path('login_func', login_func, name='login_func'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #미디어를 위한 URL 설정

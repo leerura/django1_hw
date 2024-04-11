@@ -7,6 +7,10 @@
      제목: {{diary_detail.title}}
     <br>
     작성 날짜: {{diary_detail.pub_update}}
+    {% if diary_detail.image %} <!--?????-->
+    <br>
+    사진: <img src="{{diary_detail.image.url}}"> <!--url....-->
+    {% endif %}
     <br>
     본문 내용: {{diary_detail.body}}
 </div>
