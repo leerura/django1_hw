@@ -25,8 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home , name="home"),
     path('diary/',include('diary.urls')), #다이어리 앱 다 가져와
-    path('signup', signup , name='signup' ),
-    path('signup_func', signup_func, name='signup_func'),
-    path('login', login , name='login' ),
-    path('login_func', login_func, name='login_func'),
+    path('account/', include('account.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #미디어를 위한 URL 설정

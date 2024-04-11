@@ -1,6 +1,7 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm #유저 확인, 유저 생성
 from django.http import HttpResponse
 
 
@@ -19,7 +20,8 @@ def signup_func(request):
     return redirect('home')
 
 def login(request):
-    return render(request, 'login.html')
+    form = AuthenticationForm() #폼을 html에 전달합시다.
+    return render(request, 'login.html', {'form':form})
 
 def login_func(request):
     username = request.POST['username']
