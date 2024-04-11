@@ -25,5 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home , name="home"),
     path('diary/',include('diary.urls')), #다이어리 앱 다 가져와
-    path('account/', include('account.urls'))
+    path('account/', include('account.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #미디어를 위한 URL 설정

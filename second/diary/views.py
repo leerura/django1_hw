@@ -45,7 +45,7 @@ def update(request, update_id):
     diary_update = get_object_or_404(Diary, pk=update_id)
     return render(request, "update.html", {'diary_update':diary_update})
 
-def update_fuc(request, to_id):
+def update_func(request, to_id):
     diary_to_update = get_object_or_404(Diary, pk=to_id)
     diary_to_update.title = request.POST['title'] #id 사용 not name
     diary_to_update.pub_update = timezone.now #timezone.now도 가능

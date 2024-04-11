@@ -2,7 +2,7 @@
     <h1>로그인</h1>
     <br>
     <div>
-        <form action="{% url 'login_func' %}" method="POST">
+        <form action="{% url 'login_view' %}" method="POST">
             {%csrf_token%}
             {{form.as_p}}
       <!--  <label for="username">Username</label>
@@ -12,6 +12,8 @@
             <input type="password" id="password" name="password">
             <br> -->
             <input type="submit" value="로그인">
+            <br>
+            <a href="{% url 'signup' %}">계정이 없으신가요? (회원가입하기)</a>
         </form>
     </div>
 </div>
