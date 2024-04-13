@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm #유저 확인, 유저 생성
 from django.http import HttpResponse
+from .forms import RegisterForm
 
 
 
@@ -10,10 +11,10 @@ from django.http import HttpResponse
 
 def signup(request):
     if request.method == 'GET':
-        form = UserCreationForm()
+        form = RegisterForm()
         return render(request, 'signup.html', {'form':form})
     else:
-        form = UserCreationForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()  #???
             login(request, user)
