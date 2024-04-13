@@ -17,17 +17,23 @@ def home(request):
 
 def create(request):
     form = DiaryForm
-    return render(request, "create.html", {'form':form})
+    if request.user.is_authenticated:
+        return render(request, "create.html", {'form':form})
+    else:
+        return redirect('login_view')
 
 def detail(request, id):
     diary_detail = get_object_or_404(Diary, pk = id)
-    return render(request , "detail.html", {'diary_detail' : diary_detail} ) 
+    visiter = request.user.username
+    data = {'diary_detail' : diary_detail , 'visiter' : visiter}
+    return render(request , "detail.html", data ) 
 
 def create_func(request):
     form = DiaryForm(request.POST,request.FILES)
     if form.is_valid():
         new_diary = form.save(commit=False) #임시저장
         new_diary.pub_update = timezone.now()
+        new_diary.writer = request.user.username
         new_diary.save()
         return redirect('detail', new_diary.id) #id보내야 됨
     else:

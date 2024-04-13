@@ -15,9 +15,11 @@
     본문 내용: {{diary_detail.body}}
 </div>
 <br>
+{%if diary_detail.writer == visiter %}
 <a href="{% url 'update' diary_detail.id %}">수정하기</a>
 <br>
 <a href="{% url 'delete' diary_detail.id %}">삭제하기</a>
+{% endif %}
 <br>
 <a href="{% url 'create' %}">일기 작성하기</a>
 <br>
